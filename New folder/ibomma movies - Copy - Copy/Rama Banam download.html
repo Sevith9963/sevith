@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Baby download</title>
+    <style>
+        #download-button {
+            background-color: rgba(0, 128, 0, 0.751);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            margin-top: 50px;
+            margin-left: 40%;
+        }
+        #timer {
+          font-size:24px;
+          margin-top: 10px;
+          text-align: center;
+          color: red;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+    <nav>
+        <div class="logo">
+            <img src="images/logo 4.png" alt="logo">
+        </div>
+        <div class="nav-items">
+            <a href="#"><i class="fa-solid fa-user-group"></i>About</a>
+            <a href="#"><i class="fa-solid fa-bug"></i></i>Bug Report</a>
+            <a href="#"><i class="fa-solid fa-envelope"></i></i>Contact</a>
+        </div>
+        <form action="#">
+            <input type="search" class="search-data" placeholder="search" required>
+            <button type="submit" class="fas fa-search"></button>
+        </form>
+    </nav> 
+    <button id="download-button" onclick="startDownload()">Download Now</button>
+    <div id="timer"></div>
+
+    <script>
+        function startDownload() {
+            const downloadButton = document.getElementById("download-button");
+            const timerElement = document.getElementById("timer");
+            let countdown = 5; // Set the countdown time in seconds
+
+            downloadButton.disabled = true;
+            downloadButton.innerText = "Downloading...";
+
+            const countdownInterval = setInterval(function() {
+                countdown--;
+                timerElement.innerText = `Time remaining: ${countdown} seconds`;
+
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    timerElement.innerText = "Download complete!";
+                    downloadButton.disabled = false;
+                    downloadButton.innerText = "Download Now";
+
+                    // Replace the URL below with the actual download link
+                    const downloadLink = "Rama Banam.mp4";
+                    window.location.href = downloadLink;
+                }
+            }, 1000); // Update the timer every second
+        }
+    </script>
+</body>
+</html>
